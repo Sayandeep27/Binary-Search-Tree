@@ -1,3 +1,7 @@
+
+TC - O(H) // height of tree(it may be n if it is a linear tree)
+SC - O(1)
+
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
