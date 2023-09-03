@@ -1,0 +1,25 @@
+class Solution {
+public:
+
+     bool search(TreeNode* root,TreeNode* curr,int value)
+     {
+         if(root==NULL) return false;
+
+         return (root->val == value) and (root!=curr) or (root->val < value) and search(root->right,curr,value) or (root->val > value) and search(root->left,curr,value);
+     
+     
+     }
+
+    bool dfs(TreeNode* root,TreeNode* curr,int k)
+    {
+        if(curr==NULL) return false;
+
+        int temp=curr->val;
+
+        return search(root,curr,k-temp) or dfs(root,curr->left,k) or dfs(root,curr->right,k);
+    }
+
+    bool findTarget(TreeNode* root, int k) {
+        return dfs(root,root,k);
+    }
+};
