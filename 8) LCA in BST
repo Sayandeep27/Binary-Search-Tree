@@ -5,23 +5,25 @@ SC - O(1)
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        
-        if(root==NULL) return root;
-        
-        int curr=root->val;
+       
+       if(root==NULL) return root;
 
-        if(curr < p->val and curr < q->val)
-        {
-            return lowestCommonAncestor(root->right,p,q);
-        }
+       int temp=root->val;
+       int a=p->val;
+       int b=q->val;
 
-        if(curr > p->val and curr > q->val)
-        {
-            return lowestCommonAncestor(root->left,p,q);
-        }
+       if(temp<a and temp<b)
+       {
+           return lowestCommonAncestor(root->right,p,q);
+       }
+       
 
-        return root;
+       if(temp>a and temp>b)
+       {
+           return lowestCommonAncestor(root->left,p,q);
+       }
 
+       return root;
 
     }
 };
