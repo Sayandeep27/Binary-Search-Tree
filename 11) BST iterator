@@ -1,0 +1,37 @@
+class BSTIterator {
+public:
+   
+    stack<TreeNode*>mystack;
+
+    void pushAll(TreeNode* node)
+    {
+        // this func is written by myself
+
+        while(node!=NULL)
+        {
+            mystack.push(node);
+            node=node->left;
+        }
+    }
+
+    BSTIterator(TreeNode* root) {
+        
+        pushAll(root);
+    }
+    
+    int next() {
+        
+        TreeNode* temp=mystack.top();
+        mystack.pop();
+
+        pushAll(temp->right);
+
+        return temp->val;
+    }
+    
+    bool hasNext() {
+         
+        if(mystack.size()==0) return false;
+        return true; 
+    }
+};
